@@ -70,7 +70,7 @@ function response() {
     // Create a SpeechSynthesisUtterance instance
     const utterance = new SpeechSynthesisUtterance(x);
     // Use the default speech synthesis voice (you can customize this if needed)
-    utterance.voice = speechSynthesis.getVoices()[1];
+    utterance.voice = speechSynthesis.getVoices()[0];
     // Speak the text
     speechSynthesis.speak(utterance);
 

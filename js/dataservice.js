@@ -23,7 +23,7 @@ function getResponses(){
 
 /*============================Hard coded responses =====================*/
 //predefined responses
-var greetResponse = 'Hello. How may i assist you?';
+var greetResponse = 'Hello my name is convee, "always here for your convenience." How may i assist you?';
 var goodbyResponse = 'Goodbye, i hope i answered all your question. See you next time.';
 var howareResponse = `I am a chatbot and don't have feelings. please ask me another question.`;
 var whereImFromResp = `I was developed in the country of South Africa by Convee developers, a team headed by a young developer who graduated from the University of Pretoria.`;
@@ -38,6 +38,7 @@ const messageControl = {
   'yo': greetResponse,
   'wasup': greetResponse,
   'wassup': greetResponse,
+  
   //combined helos
   'hello how are you': greetResponse + " " + howareResponse,
   'hello, how are you?': greetResponse + " " + howareResponse,
