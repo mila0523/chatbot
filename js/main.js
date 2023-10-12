@@ -2,7 +2,7 @@
 var d = new Date(); 
 var year  = d.getFullYear();
 var dateTag = document.getElementById("yearDate");
-dateTag.innerHTML =  `JS Chatbot &copy;Mila ${year} -  v1.0.0` ;
+dateTag.innerHTML =  `JS Chatbot Convee &copy; ${year} -  v1.0.0 Powered by <a href="https://convee.bsite.net/convee.co.za" target="_blank">convee.co.za</a>` ;
 
 try{
   setInterval(myTimer, 1000);
@@ -64,43 +64,16 @@ function handleEnterKeyPress(event) {
   }
 }
 
+// Function to scroll the chatbox to the bottom
+const scrollingDiv = document.getElementById('myChatBox');
 
-function appendMessage(sender, message) {
-  const chatBox = document.getElementById('chat-box');
-  
-  const messageCard = document.createElement('div');
-  messageCard.classList.add('card', 'my-2');
-
-  const cardBody = document.createElement('div');
-  cardBody.classList.add('card-body');
-
-  const cardText = document.createElement('p');
-  cardText.classList.add('card-text');
-  cardText.innerText = message;
-
-  cardBody.appendChild(cardText);
-  messageCard.appendChild(cardBody);
-
-  if (sender === 'user') {
-    messageCard.classList.add('text-right');
-  } else {
-    messageCard.classList.add('text-left');
-  }
-
-  chatBox.appendChild(messageCard);
+function scrollToBottom() {
+  scrollingDiv.scrollTop = scrollingDiv.scrollHeight;
 }
 
-function sendMessage() {
-  const messageInput = document.getElementById('message-input');
-  const message = messageInput.value.trim();
-
-  if (message !== '') {
-    appendMessage('user', message);
-
-    // Simulate a response from the chatbot
-    const botResponse = 'Thank you for your message! I am a simple chatbot.';
-    appendMessage('bot', botResponse);
-
-    messageInput.value = '';
-  }
+export{
+  scrollToBottom
 }
+
+
+

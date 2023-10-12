@@ -359,4 +359,5 @@ THIS IS FOR THE QUESTION TOOLTIP LINKS
   height: 70vh; 
   padding: 10px 15px 5px 15px;
   overflow-y: auto;
+  scroll-behavior: smooth;
 }

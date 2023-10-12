@@ -15,7 +15,6 @@
     <!--css styles-->
     <link rel="stylesheet" href="css/style.css">
     <link href="css/bootstrap.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 </head>
@@ -29,27 +28,55 @@
             </center>
         </div>
     </div>
-    <!--end Loader-->
 
+    <!--end Loader-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Chat Bot</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="localStorage.clear()" href="index.html">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--End Nav Bar-->
+
+    <!--Body-->
     <div class="container">
         <br>
-        <h2>Chat Bot</h5>
-        <div class="card" id="loginCard" style="width: 20rem; position: relative; margin: auto; top: 20vh;">
-            <div class="card-body">
-                <h4>Login <i class="fa fa-lock"></i></h4>
-                <div class="form-group">
-                    <label>Email:</label>
-                    <input type="text" class="form-control" placeholder="email">
+        <div class="row">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-sm btn-danger"
+                    onclick="localStorage.removeItem('chat-messages');">Clear Chat
+                </button>
+                
+            </div>
+            <div class="col-sm-10">
+                <div class="" id="myChatBox" style="font-size: 14px;">
+
                 </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" class="form-control" placeholder="password">
-                    <a href="#" style="font-size: 13px;">Reset password</a>
+                <br>
+                <!--message box-->
+                <div class="input-group mb-3" style="position: relative; bottom: 0px;">
+                    <input type="text" class="form-control" placeholder="type your message..." id="messageBx">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="sendBtn"><i
+                                class="fa fa-paper-plane"></i>
+                        </button>
+                    </div>
                 </div>
-                <button class="btn btn-sm btn-success form-control">Log in</button>
             </div>
         </div>
-        <footer style="position: fixed; bottom: 10px;">
+        <footer>
             <hr>
             <p id="yearDate"></p>
         </footer>
@@ -66,5 +93,4 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
-
 </html>

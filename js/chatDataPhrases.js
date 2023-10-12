@@ -1,5 +1,8 @@
 //import functions
-import { getCustomer } from "./dataservice";
+import { getCustomer } from "./dataservice.js";
+import { scrollToBottom } from "./main.js";
+import { messageControl } from "./dataservice.js";
+
 
 //messagebox
 var messageBox = document.getElementById("messageBx");
@@ -8,7 +11,7 @@ var sendButton = document.getElementById("sendBtn");
 //chatbox
 var chatbox = document.getElementById("myChatBox");
 
-sendButton.addEventListener( "click", function(){
+sendButton.addEventListener("click", function () {
     //create array
     // const UserMsg = [];
     // //push new message to array
@@ -19,46 +22,96 @@ sendButton.addEventListener( "click", function(){
     //displaying chat in chatbox
 
     chatbox.innerHTML += `<div class="card text-light bg-primary" style="padding: 10px;">
-        <p>${messageBox.value.toLowerCase()}</p>
+        <span style="font-size:12px;"><b>MILA</b></span>
+        <p>${messageBox.value}</p>
     </div><br>`
- 
-    setTimeout(() => {
-        chatbox.innerHTML += `<div id="typingDummy" class="card"  style="padding: 10px;">
-            <p>Typing...</p>
-        </div>`
-    }, 500);
+  
+    chatbox.innerHTML += `<div id="typingDummy" class="card"  style="padding: 10px;">
+        <span style="font-size:12px;"><b>CHATBOT</b></span>
+        <p id="textParagraph"></p>
+    </div>`
+
+    scrollToBottom();
+
+    function loader(){
+        var vdots = document.getElementById("textParagraph").innerHTML;
+        var dots = vdots.replace("Typing", "");
+
+        if(dots.length == 3){
+            dots = "..";
+        }
+        else if(dots.length == 2){
+            dots = "";
+        }
+        else if(dots.length == 1){
+            dots = "...";
+        } 
+        else{
+            dots = ".";
+        } 
+        document.getElementById("textParagraph").innerHTML = `Typing${dots}`;
+    }
+
+    const loadinterval = setInterval(loader, 200);
 
     setTimeout(() => {
-       response();
-    }, 1000);
+        clearInterval(loadinterval);
+        response();
+    }, 2000);
 
-    // clears text box after text
-    messageBox.value = null;
+
 })
 
-function response(){
+function response() {
     var x = compare();
     document.getElementById("typingDummy").remove();
+    var respMsgs = document.getElementsByClassName("myrespMsg")
 
-   chatbox.innerHTML += `<div class="card"  style="padding: 10px;">
+    // Create a SpeechSynthesisUtterance instance
+    const utterance = new SpeechSynthesisUtterance(x);
+    // Use the default speech synthesis voice (you can customize this if needed)
+    utterance.voice = speechSynthesis.getVoices()[1];
+    // Speak the text
+    speechSynthesis.speak(utterance);
+
+    chatbox.innerHTML += `<div class="card myrespMsg"  style="padding: 10px;">
+        <span style="font-size:12px;"><b>CHATBOT</b></span>
         <p>${x}</p>
     </div><br/>`
+
+    scrollToBottom();
 }
 
-function compare(){
-    var query = messageBox.value;
-    var test = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-    return test
+function compare() {
+    var query = messageBox.value.toLowerCase();
+
+    var errQuestionResp = `Sorry i do not understand your question, please try a different one.`;
+    const Msgresponses = messageControl;
+
+    //first check for and exact mathc then for a similar match
+    const responseText = Msgresponses[query.toLowerCase()] || errQuestionResp;
+    
+    // clears text box after text
+    messageBox.value = null;
+
+    if (responseText != errQuestionResp) { 
+        
+        // if ther is an exact match in the array keys, the response is returned.
+        return responseText;
+    }
+    else {
+        // Check if the query is contained in any of the keys
+        const matchingKey = Object.keys(Msgresponses).find(key => key.includes(query));
+
+        if (matchingKey) {
+           
+            return Msgresponses[matchingKey];
+        } else {
+           
+            return errQuestionResp;
+        }
+    }
 }
 
-//Greet Phrase
-let greetPhrases = [
-    "Hello",
-
-]
-
-let goodbyePhrase = [
-    "Goodbye",
-]
 
 
