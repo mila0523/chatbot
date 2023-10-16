@@ -1,23 +1,50 @@
 
 /*============================relational db responses / messages =====================*/
-function getAdmin(){
+var api = "";
+var apiTest = "https://localhost:7134";
+var endpoint = "";
+getAdmin();
 
+function getAdmin(){
+  //create endpoint url
+   var controller = "/api/ChatBotAccess/GetAdmins";
+   endpoint = apiTest+endpoint
+
+   $.ajax({
+    url: endpoint,
+    method: 'GET',
+    dataType: 'json',
+    success: function (data) {
+      console.log('Responses:', data);
+    },
+    error: function (xhr, status, error) {
+      console.error('Error:', status, error);
+    }
+  });
 }
 
 function getCustomer(){
-
+    //create endpoint url
+  var controller = "api/ChatBotAccess/GetCustomers";
+  endpoint = apiTest+endpoint
 }
 
 function getChats(){
-
+    //create endpoint url
+  var controller = "api/ChatBotAccess/GetChatsbyId";
+  endpoint = apiTest+endpoint
 }
 
 function getMessages(){
-
+    //create endpoint url
+  var controller = "api/ChatBotAccess/GetMessages";
+  endpoint = apiTest+endpoint
 }
 
 function getResponses(){
-
+    //create endpoint url
+  var controller = "api/ChatBotAccess/GetResponses";
+  endpoint = apiTest+endpoint
 }
 
 
