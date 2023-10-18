@@ -12,6 +12,7 @@ body{
   scroll-behavior: smooth;
   animation-duration: 3s;
   background-size: 100% 200%;
+  overflow-x: hidden;
 }
 
 .newRoman{
@@ -360,4 +361,45 @@ THIS IS FOR THE QUESTION TOOLTIP LINKS
   padding: 10px 15px 5px 15px;
   overflow-y: auto;
   scroll-behavior: smooth;
+}
+
+#alertBox{
+  position: absolute;
+  top: 50px;
+  max-width: 200px;
+  padding: 5px;
+  border-style: solid;
+  border-left-width: 8px;
+  border-left-color: rgb(255, 0, 0);
+  border-bottom-color:red;
+  border-top-color: red;
+  border-right-color: white;
+  border-top-width: 0.5px;
+  border-bottom-width: 0.5px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  font-size: 13px;
+  display: none; /* Initially hide the alert box */
+}
+
+@keyframes slideInAndOut {
+  0% {
+    right: -200px; /* Initial position off the right */
+  }
+  20% {
+    right: 0; /* Sliding in */
+  }
+  80% {
+    right: 0; /* Holding the position */
+  }
+  100% {
+    right: -200px; /* Sliding out to the right */
+  }
+}
+
+.slideInAndOutAnimation {
+  animation: slideInAndOut 5s ease forwards;
+  display: none; /* Initially hide the alert box */
 }

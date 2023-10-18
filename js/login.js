@@ -1,11 +1,12 @@
 //import functions
 import { getCustomer } from "./dataservice.js";
 import { getAdmin } from "./dataservice.js";
+import { sideAlert } from "./main.js";
 
 const adminUsers = getAdmin();
 const custUsers = getCustomer();
 
-console.log(adminUsers)
+
 var errMsg = document.getElementById("errMessg");
 
 var loginBtn = document.getElementById("loginBtn");
@@ -67,5 +68,4 @@ loginBtn.addEventListener("click", function (){
 function myErrorMsg(msg){
     errMsg.innerHTML = msg;
 }
-
 

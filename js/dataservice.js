@@ -1,8 +1,12 @@
+import { sideAlert } from "./main.js";
 
 /*============================relational db responses / messages =====================*/
-var api = "";
+var api = "https://api.convee.co.za/api/";
 var apiTest = "https://localhost:7134/api/";
 var endpoint = "";
+
+
+
 
 function getAdmin() {
   //create endpoint url
@@ -19,6 +23,7 @@ function getAdmin() {
     },
     error: (xhr, status, error) => {
       console.error('Error:', status, error); 
+      sideAlert(status.toUpperCase() + "! failed to load admin data from database.")
     }
   });
 
@@ -149,3 +154,4 @@ export {
   getMessages,
   getResponses,
 };
+

@@ -75,18 +75,33 @@ function scrollToBottom() {
   scrollingDiv.scrollTop = scrollingDiv.scrollHeight;
 }
 
-var userfullname = localStorage.getItem("username") + " " + localStorage.getItem("usersurname");
-if(userfullname){
-    document.getElementById("userDetail").innerHTML += `<i class="fa fa-user-circle"></i> ${userfullname}`;
+try{
+  var userfullname = localStorage.getItem("username") + " " + localStorage.getItem("usersurname");
+  if(userfullname){
+      document.getElementById("userDetail").innerHTML += `<i class="fa fa-user-circle"></i> ${userfullname}`;
+  }
+  else{
+      document.getElementById("userDetail").innerHTML = `<i class="fa fa-user-circle"></i> Not logged in`;
+  }
 }
-else{
-    document.getElementById("userDetail").innerHTML = `<i class="fa fa-user-circle"></i> Not logged in`;
+catch{
+
 }
 
+
+function sideAlert(msg){
+  var sidebox = document.getElementById("alertBox");
+  sidebox.innerHTML = msg;
+  sidebox.style.display = "block"
+
+  setTimeout(()=> {
+    sidebox.style.display = "none"
+  }, 5000);
+}
 
 export{
-  scrollToBottom
+  scrollToBottom,
+  sideAlert
 }
-
 
 
