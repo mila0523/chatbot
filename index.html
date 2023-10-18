@@ -43,17 +43,18 @@
                         <hr>
                         <h5>Login <i class="fa fa-lock"></i></h5>
                     </center>
-
-                    <div class="form-group">
-                        <label>Email:</label>
-                        <input type="text" class="form-control form-control-sm" placeholder="email">
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control form-control-sm" placeholder="password">
-                        <a href="#" style="font-size: 13px;">Reset password</a>
-                    </div>
-                    <button class="btn btn-sm btn-primary form-control">Log in</button>
+                    <form>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="text" class="form-control form-control-sm" id="email" placeholder="email">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control form-control-sm" id="password" placeholder="password">
+                            <a href="#" style="font-size: 13px;">Reset password</a>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-sm btn-primary form-control" id="loginBtn">Log in</button>
                 </div>
             </div>
             <footer style="position: fixed; bottom: 10px;">
@@ -64,13 +65,14 @@
 
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-chevron-up"></i></button>
     <!--Script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/chatDataPhrases.js"></script>
     <script src="js/all.js"></script>
     <script type="module" src="js/dataservice.js"></script>
+    <script type="module" src="js/login.js"></script>
 
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 

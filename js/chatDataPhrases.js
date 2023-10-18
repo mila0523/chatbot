@@ -10,58 +10,61 @@ var messageBox = document.getElementById("messageBx");
 var sendButton = document.getElementById("sendBtn");
 //chatbox
 var chatbox = document.getElementById("myChatBox");
-
-sendButton.addEventListener("click", function () {
-    //create array
-    // const UserMsg = [];
-    // //push new message to array
-    // UserMsg.push(messageBox.value);
-    // //save array to localstorage
-    // const saveArray = JSON.stringify(UserMsg);
-    // localStorage.setItem('chat-messages', saveArray);
-    //displaying chat in chatbox
-
-    chatbox.innerHTML += `<div class="card text-light bg-primary" style="padding: 10px;">
-        <span style="font-size:12px;"><b>MILA</b></span>
-        <p>${messageBox.value}</p>
-    </div><br>`
-  
-    chatbox.innerHTML += `<div id="typingDummy" class="card"  style="padding: 10px;">
-        <span style="font-size:12px;"><b>CHATBOT</b></span>
-        <p id="textParagraph"></p>
-    </div>`
-
-    scrollToBottom();
-
-    function loader(){
-        var vdots = document.getElementById("textParagraph").innerHTML;
-        var dots = vdots.replace("Typing", "");
-
-        if(dots.length == 3){
-            dots = "..";
+try{
+    sendButton.addEventListener("click", function () {
+        //create array
+        // const UserMsg = [];
+        // //push new message to array
+        // UserMsg.push(messageBox.value);
+        // //save array to localstorage
+        // const saveArray = JSON.stringify(UserMsg);
+        // localStorage.setItem('chat-messages', saveArray);
+        //displaying chat in chatbox
+    
+        chatbox.innerHTML += `<div class="card text-light bg-primary" style="padding: 10px;">
+            <span style="font-size:12px;"><b>MILA</b></span>
+            <p>${messageBox.value}</p>
+        </div><br>`
+      
+        chatbox.innerHTML += `<div id="typingDummy" class="card"  style="padding: 10px;">
+            <span style="font-size:12px;"><b>CHATBOT</b></span>
+            <p id="textParagraph"></p>
+        </div>`
+    
+        scrollToBottom();
+    
+        function loader(){
+            var vdots = document.getElementById("textParagraph").innerHTML;
+            var dots = vdots.replace("Typing", "");
+    
+            if(dots.length == 3){
+                dots = "..";
+            }
+            else if(dots.length == 2){
+                dots = "";
+            }
+            else if(dots.length == 1){
+                dots = "...";
+            } 
+            else{
+                dots = ".";
+            } 
+            document.getElementById("textParagraph").innerHTML = `Typing${dots}`;
         }
-        else if(dots.length == 2){
-            dots = "";
-        }
-        else if(dots.length == 1){
-            dots = "...";
-        } 
-        else{
-            dots = ".";
-        } 
-        document.getElementById("textParagraph").innerHTML = `Typing${dots}`;
-    }
+    
+        const loadinterval = setInterval(loader, 200);
+    
+        setTimeout(() => {
+            clearInterval(loadinterval);
+            response();
+        }, 2000);
+    
+    
+    })
+    
+}catch{
 
-    const loadinterval = setInterval(loader, 200);
-
-    setTimeout(() => {
-        clearInterval(loadinterval);
-        response();
-    }, 2000);
-
-
-})
-
+}
 function response() {
     var x = compare();
     document.getElementById("typingDummy").remove();

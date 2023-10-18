@@ -53,10 +53,14 @@ function hideloader(){
   loader.style.display = "none"
 }
 
-
-// Add an event listener to the text box for the "Enter" key press
+try {
+  // Add an event listener to the text box for the "Enter" key press
 document.getElementById('messageBx').addEventListener('keydown', handleEnterKeyPress);
 
+}
+catch{
+  
+}
 function handleEnterKeyPress(event) {
   if (event.key === 'Enter') {
     event.preventDefault();  // Prevent the default action (form submission)

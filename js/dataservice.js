@@ -1,50 +1,66 @@
 
 /*============================relational db responses / messages =====================*/
 var api = "";
-var apiTest = "https://localhost:7134";
+var apiTest = "https://localhost:7134/api/";
 var endpoint = "";
-getAdmin();
 
-function getAdmin(){
+function getAdmin() {
   //create endpoint url
-   var controller = "/api/ChatBotAccess/GetAdmins";
-   endpoint = apiTest+endpoint
-
-   $.ajax({
+  var controller = "ChatBotAccess/GetAdmins";
+  endpoint = apiTest + controller
+  var mydata = [];
+  $.ajax({  
     url: endpoint,
     method: 'GET',
-    dataType: 'json',
-    success: function (data) {
-      console.log('Responses:', data);
+    success: (data) => {
+      data.forEach(element => {
+        mydata.push(element);
+      });
     },
-    error: function (xhr, status, error) {
-      console.error('Error:', status, error);
+    error: (xhr, status, error) => {
+      console.error('Error:', status, error); 
     }
   });
+
+  return mydata;
 }
 
-function getCustomer(){
-    //create endpoint url
-  var controller = "api/ChatBotAccess/GetCustomers";
-  endpoint = apiTest+endpoint
+function getCustomer() {
+  //create endpoint url
+  var controller = "ChatBotAccess/GetCustomers";
+  endpoint = apiTest + controller
+  var mydata = [];
+  $.ajax({  
+    url: endpoint,
+    method: 'GET',
+    success: (data) => {
+      data.forEach(element => {
+        mydata.push(element);
+      });
+    },
+    error: (xhr, status, error) => {
+      console.error('Error:', status, error); 
+    }
+  });
+  return mydata;
 }
 
-function getChats(){
-    //create endpoint url
-  var controller = "api/ChatBotAccess/GetChatsbyId";
-  endpoint = apiTest+endpoint
+function getChats() {
+  //create endpoint url
+  var controller = "ChatBotAccess/GetChatsbyId";
+  endpoint = apiTest + controller
 }
 
-function getMessages(){
-    //create endpoint url
-  var controller = "api/ChatBotAccess/GetMessages";
-  endpoint = apiTest+endpoint
+function getMessages() {
+  //create endpoint url
+  var controller = "ChatBotAccess/GetMessages";
+  endpoint = apiTest + controller
 }
 
-function getResponses(){
-    //create endpoint url
-  var controller = "api/ChatBotAccess/GetResponses";
-  endpoint = apiTest+endpoint
+function getResponses() {
+  //create endpoint url
+  var controller = "ChatBotAccess/GetResponses";
+  endpoint = apiTest + controller
 }
 
 
@@ -65,7 +81,7 @@ const messageControl = {
   'yo': greetResponse,
   'wasup': greetResponse,
   'wassup': greetResponse,
-  
+
   //combined helos
   'hello how are you': greetResponse + " " + howareResponse,
   'hello, how are you?': greetResponse + " " + howareResponse,
@@ -115,17 +131,21 @@ const messageControl = {
   'tell me about you': aboutMeResponse,
   'about yourself': aboutMeResponse,
   'more about you': aboutMeResponse,
-  'who are you':aboutMeResponse,  
+  'who are you': aboutMeResponse,
   'what are you': aboutMeResponse,
   'when were you made?': aboutMeResponse,
   'tell me about you?': aboutMeResponse,
   'about yourself?': aboutMeResponse,
   'more about you?': aboutMeResponse,
-  'who are you?':aboutMeResponse,  
+  'who are you?': aboutMeResponse,
   'what are you?': aboutMeResponse,
 };
 
-export{
+export {
   messageControl,
-  getCustomer
+  getCustomer,
+  getAdmin,
+  getChats,
+  getMessages,
+  getResponses,
 };
