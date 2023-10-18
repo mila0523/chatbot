@@ -20,7 +20,7 @@ function myTimer() {
   catch{
 
   }  
-  hideloader();
+
 }
 
 //SCROLL TO FUNCTION
@@ -101,7 +101,8 @@ function sideAlert(msg){
 
 export{
   scrollToBottom,
-  sideAlert
+  sideAlert,
+  hideloader
 }
 
 

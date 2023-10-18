@@ -1,4 +1,6 @@
 import { sideAlert } from "./main.js";
+import { hideloader } from "./main.js";
+
 
 /*============================relational db responses / messages =====================*/
 var api = "https://api.convee.co.za/api/";
@@ -20,6 +22,7 @@ function getAdmin() {
       data.forEach(element => {
         mydata.push(element);
       });
+      hideloader();
     },
     error: (xhr, status, error) => {
       console.error('Error:', status, error); 
@@ -68,6 +71,17 @@ function getResponses() {
   endpoint = apiTest + controller
 }
 
+/*===========================Create to databse==========================*/
+function addCustomer(){
+  var controller = "ChatBotAccess/addCustomer";
+}
+
+
+
+/*===========================Edit Database ============================ */
+function editCustomer(){
+  var controller = "ChatBotAccess/editCustomer";
+}
 
 /*============================Hard coded responses =====================*/
 //predefined responses

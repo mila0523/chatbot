@@ -110,11 +110,7 @@ function compare() {
            
             return Msgresponses[matchingKey];
         } else {
-           
             return errQuestionResp;
         }
     }
 }
-
-
-
