@@ -70,12 +70,12 @@ function response() {
     document.getElementById("typingDummy").remove();
     var respMsgs = document.getElementsByClassName("myrespMsg")
 
-    // Create a SpeechSynthesisUtterance instance
-    const utterance = new SpeechSynthesisUtterance(x);
-    // Use the default speech synthesis voice (you can customize this if needed)
-    utterance.voice = speechSynthesis.getVoices()[0];
-    // Speak the text
-    speechSynthesis.speak(utterance);
+    // // Create a SpeechSynthesisUtterance instance
+    // const utterance = new SpeechSynthesisUtterance(x);
+    // // Use the default speech synthesis voice (you can customize this if needed)
+    // utterance.voice = speechSynthesis.getVoices()[0];
+    // // Speak the text
+    // speechSynthesis.speak(utterance);
 
     chatbox.innerHTML += `<div class="card myrespMsg"  style="padding: 10px;">
         <span style="font-size:12px;"><b>CHATBOT</b></span>

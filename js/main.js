@@ -75,6 +75,15 @@ function scrollToBottom() {
   scrollingDiv.scrollTop = scrollingDiv.scrollHeight;
 }
 
+var userfullname = localStorage.getItem("username") + " " + localStorage.getItem("usersurname");
+if(userfullname){
+    document.getElementById("userDetail").innerHTML += `<i class="fa fa-user-circle"></i> ${userfullname}`;
+}
+else{
+    document.getElementById("userDetail").innerHTML = `<i class="fa fa-user-circle"></i> Not logged in`;
+}
+
+
 export{
   scrollToBottom
 }
