@@ -1,7 +1,7 @@
 //import functions
 import { getCustomer } from "./dataservice.js";
 import { scrollToBottom } from "./main.js";
-import { messageControl } from "./dataservice.js";
+import { messageControl } from "./predefined.js";
 
 
 //messagebox
@@ -99,17 +99,29 @@ function compare() {
 
     if (responseText != errQuestionResp) { 
         
-        // if ther is an exact match in the array keys, the response is returned.
+        // if there is an exact match in the array keys, the response is returned.
         return responseText;
     }
     else {
         // Check if the query is contained in any of the keys
-        const matchingKey = Object.keys(Msgresponses).find(key => key.includes(query));
+        const matchingKey = Object.keys(Msgresponses).find(key => key.toLowerCase().includes(query));
 
         if (matchingKey) {
-           
             return Msgresponses[matchingKey];
-        } else {
+        } 
+        else if (matchingKey == null || matchingKey == undefined){
+            const matchingKey2 = Object.keys(Msgresponses).find(key => {
+                const lowercase_Key = key.toLowerCase();
+                return query.split(' ').some(word => lowercase_Key.includes(word));
+             });
+
+             if(matchingKey2){
+                 return Msgresponses[matchingKey2];
+             }else{
+                    return errQuestionResp;
+             }
+        }
+        else {
             return errQuestionResp;
         }
     }

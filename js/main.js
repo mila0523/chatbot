@@ -106,3 +106,16 @@ export{
 }
 
 
+//function to check if there is a logged in user in the localstorage
+var user_name = localStorage.getItem("username"); 
+var user_surname = localStorage.getItem("usersurname");
+
+if(user_name && user_surname){
+  //user is logged in
+  document.getElementById("loader-gif").style.display = "none";
+}
+else{
+  //user is not logged in
+  window.location.href = "/index.html";
+}
+
